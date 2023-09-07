@@ -1,8 +1,5 @@
-npm install @reduxjs/toolkit react-redux axios sass yup formik react-router-dom antd
+swagger:https://shop.cyberlearn.vn/swagger/index.html
 
-
-neu su dung vite@4.4.9 binh thuong
-dung cai lai version 4.3.9
-
-node 16.20.0 | 4.3.9
-node 18.16.1 | 4.4.9
+- props, state, chia component.
+- render. - setState, props thay đổi, cha render - con render
+- custom hooks
