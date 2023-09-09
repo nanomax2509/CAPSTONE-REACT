@@ -40,10 +40,14 @@ function HeaderHomeTemplate() {
 			<header className='header-home-template'>
 				<LogoIcon />
 				<div className='header-nav-right'>
-					<div className='header-search'>
+					<NavLink className='header-search' to='/'>
 						<img src={SearchSvg} />
 						<p className='header-text-search'>Search</p>
-					</div>
+					</NavLink>
+					<NavLink className="header-nav-cart">
+					<p className='header-icon-cart'>🛒</p>
+					<p className="header-cart-number">(1)</p>
+					</NavLink>
 					{userProfile.email ? (
 						<>
 							<p
@@ -67,7 +71,7 @@ function HeaderHomeTemplate() {
 				</div>
 			</header>
 			<nav className='header-menu'>
-				<NavLink className={'menu-item'} to='/'>
+				<NavLink className={'menu-item '} to='/'>
 					Home
 				</NavLink>
 				<NavLink className={'menu-item'} to='/'>

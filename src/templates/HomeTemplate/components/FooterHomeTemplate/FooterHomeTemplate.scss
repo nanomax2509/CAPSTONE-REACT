@@ -1,0 +1,24 @@
+.footer-home-template{
+    display: flex;
+    justify-content: space-around;
+    background-color: azure;
+    padding-bottom: 30px;
+    .footer-link{
+        display: block;
+        text-decoration: none;
+        color: black;
+    padding-bottom: 5px;
+
+    }
+
+}
+.footer-copyright{
+    text-align: center;
+    background-color: #D9D9D9;
+    height: 74px;
+    align-items: center;
+    line-height: 74px;
+    h4{
+    margin-top: 0;
+    }
+}

@@ -59,3 +59,27 @@
 		}
 	}
 }
+.card-product {
+	position: relative;
+  }
+  
+  .heart-icon {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 30px;
+  }
+  .heartRed{
+	color: red;
+	transition: .5s;
+	width: 40px;
+		height: 40px;
+	:hover{
+		background-color: red;
+		color: white;
+		border-radius: 30%;
+		
+
+	  }
+  }
+  

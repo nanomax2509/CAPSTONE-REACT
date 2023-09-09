@@ -2,6 +2,7 @@ import React, { Fragment, Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import HeaderHomeTemplate from './components/HeaderHomeTemplate/HeaderHomeTemplate';
 import { useScrollTop } from '../../hooks/useScrollTop';
+import FooterHomeTemplate from './components/FooterHomeTemplate/FooterHomeTemplate';
 
 function HomeTemplate() {
 	// app có re-render không? app không render. nên nó không chạy lại useScrollTop
@@ -19,7 +20,8 @@ function HomeTemplate() {
 					<Outlet />
 				</Suspense>
 			</div>
-			<footer
+			<FooterHomeTemplate/>
+			{/* <footer
 				style={{
 					height: 80,
 					background: 'black',
@@ -27,7 +29,7 @@ function HomeTemplate() {
 					color: 'white',
 				}}>
 				Footer
-			</footer>
+			</footer> */}
 		</Fragment>
 	);
 }
