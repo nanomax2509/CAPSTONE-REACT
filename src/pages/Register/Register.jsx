@@ -3,19 +3,25 @@ import './Register.scss';
 
 function Register() {
 	const [values, setValues] = useState({
-		userName: '',
+		email: '',
+		name: '',
 		password: '',
 		confirmPassword: '',
+		phone: '',
+		gender: true,
 	});
 
 	const [errors, setErrors] = useState({
-		userName: '',
+		email: '',
+		name: '',
 		password: '',
 		confirmPassword: '',
+		phone: '',
+		gender: true,
 	});
 
 	// const [touched, setTouched] = useState({
-	// 	userName: '',
+	// 	name: '',
 	// 	password: '',
 	// 	confirmPassword: '',
 	// });
@@ -40,11 +46,11 @@ function Register() {
 		const { value, name } = event.target;
 		const newErrors = {};
 
-		if (name === 'userName') {
+		if (name === 'name') {
 			if (value === '') {
-				newErrors.userName = 'Username is required';
+				newErrors.name = 'name is required';
 			} else {
-				newErrors.userName = '';
+				newErrors.name = '';
 			}
 		}
 
@@ -73,15 +79,26 @@ function Register() {
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
-				<label>User Name: </label>
+				<label>Email</label>
 				<input
 					onBlur={handleBlur}
 					onChange={handleChangeValue}
 					type='text'
-					name='userName'
-					value={values.userName}
+					name='email'
+					value={values.email}
 				/>
-				{errors.userName && <p>{errors.userName}</p>}
+				{errors.name && <p>{errors.name}</p>}
+			</div>
+			<div>
+				<label>Name</label>
+				<input
+					onBlur={handleBlur}
+					onChange={handleChangeValue}
+					type='text'
+					name='name'
+					value={values.name}
+				/>
+				{errors.name && <p>{errors.name}</p>}
 			</div>
 
 			<div>
@@ -107,7 +124,31 @@ function Register() {
 				/>
 				{errors.confirmPassword && <p>{errors.confirmPassword}</p>}
 			</div>
-
+			<div>
+				<label>Phone</label>
+				<input
+					onBlur={handleBlur}
+					onChange={handleChangeValue}
+					type='text'
+					name='phone'
+					value={values.phone}
+				/>
+				{errors.name && <p>{errors.name}</p>}
+			</div>
+			<div>
+				<label>Gender</label>
+				<select
+					onBlur={handleBlur}
+					onChange={handleChangeValue}
+					name="gender"
+					value={values.gender}
+				>
+					<option value="">Select gender</option>
+					<option value="true">Male</option>
+					<option value="false">Female</option>
+				</select>
+				{errors.gender && <p>{errors.gender}</p>}
+			</div>
 			<button type='submit'>Submit</button>
 		</form>
 	);

@@ -1,0 +1,23 @@
+.register-title{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+}
+.register-col{
+    padding: 0 10rem;
+    .register-input{
+        background-color:  #21212114;
+        color: black;
+        height: 4rem;
+        font-size: 16px;
+    }
+}
+.btn-submit{
+    margin-top: 3rem;
+    margin-left: 9rem;
+    padding: 1rem 3rem;
+    font-size: 20px;
+}
+.register-error{
+    margin: 2rem 0 0 9rem;
+}
