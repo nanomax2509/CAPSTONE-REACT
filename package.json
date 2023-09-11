@@ -4,8 +4,8 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "setHTTPS=true vite ",
-        "start": " vite",
+        "dev": "set HTTPS=true&&vite ",
+        "start": "vite",
         "build": "vite build",
         "preview": "vite preview"
     },
