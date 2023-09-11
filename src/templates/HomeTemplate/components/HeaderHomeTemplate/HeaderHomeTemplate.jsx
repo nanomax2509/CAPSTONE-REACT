@@ -70,7 +70,7 @@ function HeaderHomeTemplate() {
 					)}
 				</div>
 			</header>
-			<nav className='header-menu'>
+			<nav className='header-menu '>
 				<NavLink className={'menu-item '} to='/'>
 					Home
 				</NavLink>

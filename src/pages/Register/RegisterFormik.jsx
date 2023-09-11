@@ -16,12 +16,12 @@ const schemaRegister = Yup.object({
 		.max(10, 'Must be 10 characters or less'),
 	password: Yup.string()
 		.required('Password is required')
-		.min(6, 'Must be at least 2 characters')
+		.min(6, 'Must be at least 6 characters')
 		.max(10, 'Must be 10 characters or less'),
 	confirmPassword: Yup.string()
 		.required('Password is required')
 		.oneOf([Yup.ref('password')], 'Confirm Password Must be matched') // yêu cầu password với confirmPassword giống nhau.
-		.min(6, 'Must be at least 2 characters')
+		.min(6, 'Must be at least 6 characters')
 		.max(10, 'Must be 10 characters or less'),
 	phone: Yup.string().required().matches(phoneRegExp, 'Phone number is not valid'),
 });
