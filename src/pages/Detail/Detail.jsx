@@ -87,9 +87,9 @@ function Detail() {
 	}
 
 	return (
-		<div>
+		<div className='DetailContain'>
 			<DetailProduct />
-			<h3>Relate Product</h3>
+			<h3 className='text-center mb-5 container'>Relate Product</h3>
 
 			<ListProduct
 				className='list-product-detail'
