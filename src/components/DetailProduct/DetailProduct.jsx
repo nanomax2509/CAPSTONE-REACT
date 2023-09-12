@@ -1,9 +1,17 @@
 import React from "react";
 import "./DetailProduct.scss";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { setCarts } from "../../redux/slices/carts";
 
 function DetailProduct() {
   const { productDetail } = useSelector((state) => state.ProductReducer);
+  const { carts } = useSelector((state) => state.CartsReducer);
+	const dispatch=useDispatch();
+	const handleAddToCart=()=>{
+		const action=setCarts(productDetail);
+		dispatch(action);
+	};
+	console.log(carts)
   // {....}
   return (
     <div className="detail-product">
@@ -28,7 +36,7 @@ function DetailProduct() {
           <span>1</span>
           <button className="detail-product-quantity-btn btn-warning ">+</button>
         </div>
-        <button className="detail-product-add-to-cart-btn btn-warning">Add to cart</button>
+        <button onClick={handleAddToCart} className="detail-product-add-to-cart-btn btn-warning">Add to cart</button>
       </div>
     </div>
   );

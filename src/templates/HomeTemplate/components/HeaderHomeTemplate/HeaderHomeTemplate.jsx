@@ -19,6 +19,7 @@ import { resetUserProfile } from '../../../../redux/slices/User';
 
 function HeaderHomeTemplate() {
 	const { userProfile } = useSelector((state) => state.UserReducer);
+	const { totalQuantity } = useSelector((state) => state.CartsReducer);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -44,9 +45,9 @@ function HeaderHomeTemplate() {
 						<img src={SearchSvg} />
 						<p className='header-text-search'>Search</p>
 					</NavLink>
-					<NavLink className="header-nav-cart">
+					<NavLink to={"/carts"} className="header-nav-cart">
 					<p className='header-icon-cart'>🛒</p>
-					<p className="header-cart-number">(1)</p>
+					<p className="header-cart-number">({totalQuantity})</p>
 					</NavLink>
 					{userProfile.email ? (
 						<>
