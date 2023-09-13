@@ -13,8 +13,12 @@ import SearchSvg from "src/assets/imgs/search.svg";
 // import SearchIcon from 'src/assets/icons/SearchIcon';
 import { LogoIcon, SearchIcon } from "src/assets/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteKey, getLocalStorage } from "../../../../utils";
-import { ACCESS_TOKEN, LIST_CARTS } from "../../../../constant";
+import {
+  deleteKey,
+  getLocalStorage,
+  saveLocalStorage,
+} from "../../../../utils";
+import { ACCESS_TOKEN, LIST_CARTS, REQUEST_CARTS } from "../../../../constant";
 import { resetUserProfile } from "../../../../redux/slices/User";
 
 function HeaderHomeTemplate() {
@@ -37,6 +41,16 @@ function HeaderHomeTemplate() {
 
     //  call api logout.
   };
+  const handleToCarts = () => {
+    const checkLogin = getLocalStorage(ACCESS_TOKEN);
+    if (!checkLogin) {
+      alert("bạn cần phải đăng nhập để vào giỏ hàng");
+      navigate("/login");
+      saveLocalStorage(REQUEST_CARTS, true);
+    } else {
+      navigate("/carts");
+    }
+  };
   return (
     <Fragment>
       <header className="header-home-template">
@@ -46,10 +60,10 @@ function HeaderHomeTemplate() {
             <img src={SearchSvg} />
             <p className="header-text-search">Search</p>
           </NavLink>
-          <NavLink to={"/carts"} className="header-nav-cart">
+          <button onClick={handleToCarts} className="header-nav-cart btn">
             <p className="header-icon-cart">🛒</p>
             <p className="header-cart-number">({listCart.length})</p>
-          </NavLink>
+          </button>
           {userProfile.email ? (
             <>
               <p

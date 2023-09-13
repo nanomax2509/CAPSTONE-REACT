@@ -2,12 +2,12 @@ import axios from "axios";
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
-import { saveLocalStorage } from "../../utils";
-import { ACCESS_TOKEN } from "../../constant";
+import { deleteKey, getLocalStorage, saveLocalStorage } from "../../utils";
+import { ACCESS_TOKEN, REQUEST_CARTS } from "../../constant";
 import { useNavigate } from "react-router-dom";
 import "./Login.scss";
 import { NavLink } from "react-router-dom";
-import FacebookLogin from "../../components/FacebookLogin/FacebookLogin";
+// import FacebookLogin from "../../components/FacebookLogin/FacebookLogin";
 const schemaLogin = Yup.object({
   email: Yup.string().email().required("Username is required"),
   password: Yup.string()
@@ -43,8 +43,8 @@ function Login() {
 
         // lưu vào storage
         saveLocalStorage(ACCESS_TOKEN, resp.data.content.accessToken);
-
         navigate("/profile");
+
         // public: ai cũng có thể gọi được hết.
 
         // private: cần phải xác định được danh tính bạn là ai thì mới được phép gọi những api đó.
@@ -99,7 +99,7 @@ function Login() {
           Login
         </button>
       </div>
-      <FacebookLogin />
+      {/* <FacebookLogin /> */}
       {errorMessage && (
         <p className="text-danger login-error d-block">{errorMessage}</p>
       )}
