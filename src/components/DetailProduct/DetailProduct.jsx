@@ -2,14 +2,18 @@ import React from "react";
 import "./DetailProduct.scss";
 import { useSelector,useDispatch } from "react-redux";
 import { setCarts } from "../../redux/slices/carts";
+import { deleteKey, saveLocalStorage } from "../../utils";
+import { LIST_CARTS } from "../../constant";
 
 function DetailProduct() {
+  // deleteKey(LIST_CARTS)
   const { productDetail } = useSelector((state) => state.ProductReducer);
   const { carts } = useSelector((state) => state.CartsReducer);
 	const dispatch=useDispatch();
 	const handleAddToCart=()=>{
 		const action=setCarts(productDetail);
-		dispatch(action);
+	  dispatch(action);
+    // saveLocalStorage(LIST_CARTS,action);
 	};
 	console.log(carts)
   // {....}

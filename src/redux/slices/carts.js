@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getLocalStorage, saveLocalStorage } from "../../utils";
+import { LIST_CARTS } from "../../constant";
 export const initialState = {
-  carts: [],
+  carts: getLocalStorage(LIST_CARTS),
   totalQuantity: 0,
   totalPrice: 0,
 };
@@ -17,6 +19,7 @@ const CartsSlice = createSlice({
       if (index === -1) {
         state.carts.push(action.payload);
         state.totalQuantity++;
+        saveLocalStorage(LIST_CARTS, state.carts);
       }
     },
     setRemoveItem: (state, action) => {
@@ -25,6 +28,7 @@ const CartsSlice = createSlice({
       });
       state.carts = newcart;
       state.totalQuantity--;
+      saveLocalStorage(LIST_CARTS, state.carts);
     },
     // setTotalQuatity
     // setProductDetail: (state, action) => {

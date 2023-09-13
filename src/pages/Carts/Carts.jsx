@@ -3,9 +3,10 @@ import css from "./carts.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 
 import CartItem from "./carts-item";
+import { deleteKey, getLocalStorage } from "../../utils";
+import { LIST_CARTS } from "../../constant";
 function Carts() {
   const { carts } = useSelector((state) => state.CartsReducer);
-
   return (
     <div className={css["cart"]}>
       <h2 className={css["heading-cart"]}>Carts</h2>
@@ -28,6 +29,22 @@ function Carts() {
           {carts.map((item, index) => {
             return <CartItem index={index} item={item} />;
           })}
+          {carts.length !== 0 ? (
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <button className="btn btn-warning">Submit order</button>
+              </td>
+            </tr>
+          ) : (
+            ""
+          )}
         </table>
       </div>
     </div>
