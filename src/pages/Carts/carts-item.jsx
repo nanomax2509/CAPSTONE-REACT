@@ -1,10 +1,16 @@
 import React, { useState, useRef } from "react";
 import css from "./carts.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { setRemoveItem } from "../../redux/slices/carts";
+import {
+  setEditItem,
+  setRemoveItem,
+  setStateEdit,
+} from "../../redux/slices/carts";
+import { useNavigate } from "react-router-dom";
 function CartItem(props) {
   const { item, index } = props;
   const [quantity, setQuantity] = useState(item.orderQuantity);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleDelete = (id) => {
     const action = setRemoveItem(id);
@@ -16,6 +22,10 @@ function CartItem(props) {
     } else {
       setQuantity(quantity + num);
     }
+  };
+  const handleEdit = () => {
+    navigate(`/detail/${item.id}`);
+    dispatch(setStateEdit(true));
   };
   return (
     <tr key={item.id}>
@@ -48,7 +58,9 @@ function CartItem(props) {
       </td>
       <td className="p-0">{quantity * item.price}$</td>
       <td>
-        <button className="btn btn-primary m-1">Edit</button>
+        <button onClick={handleEdit} className="btn btn-primary m-1">
+          Edit
+        </button>
         <button
           className="btn btn-danger m-1"
           onClick={() => {

@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import "./DetailProduct.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { setCarts } from "../../redux/slices/carts";
+import { setCarts, setEditItem, setStateEdit } from "../../redux/slices/carts";
 import { deleteKey, saveLocalStorage } from "../../utils";
 import { LIST_CARTS } from "../../constant";
+import { useNavigate } from "react-router-dom";
 
 function DetailProduct() {
   // deleteKey(LIST_CARTS)
   const { productDetail } = useSelector((state) => state.ProductReducer);
+  const navigate = useNavigate();
   let selectSize = "";
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("36");
   console.log(productDetail);
   const { carts } = useSelector((state) => state.CartsReducer);
+  const { stateEdit } = useSelector((state) => state.CartsReducer);
   const cartItem = {
     ...productDetail,
     orderQuantity: quantity,
@@ -20,8 +23,20 @@ function DetailProduct() {
   };
   const dispatch = useDispatch();
   const handleAddToCart = () => {
-    const action = setCarts(cartItem);
-    dispatch(action);
+    if (stateEdit) {
+      const newEdit = {
+        ...productDetail,
+        orderQuantity: quantity,
+        orderSize: size,
+      };
+      dispatch(setEditItem(newEdit));
+      dispatch(setStateEdit(false));
+      navigate("/carts");
+      naviga;
+    } else {
+      const action = setCarts(cartItem);
+      dispatch(action);
+    }
   };
   const handleSelectSize = (e) => {
     setSize(e.target.innerHTML);

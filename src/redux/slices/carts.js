@@ -4,7 +4,7 @@ import { LIST_CARTS } from "../../constant";
 export const initialState = {
   carts: getLocalStorage(LIST_CARTS),
   totalQuantity: 0,
-  totalPrice: 0,
+  stateEdit: false,
 };
 
 const CartsSlice = createSlice({
@@ -32,6 +32,17 @@ const CartsSlice = createSlice({
       state.totalQuantity--;
       saveLocalStorage(LIST_CARTS, state.carts);
     },
+    setEditItem: (state, action) => {
+      const index = state.carts.findIndex((sp) => {
+        return sp.id === action.payload.id;
+      });
+      state.carts.splice(index, 1, action.payload);
+      saveLocalStorage(LIST_CARTS, state.carts);
+      alert("Bạn đã chỉnh sửa sản phẩm thành công");
+    },
+    setStateEdit: (state, action) => {
+      state.stateEdit = action.payload;
+    },
     // setTotalQuatity
     // setProductDetail: (state, action) => {
     // 	state.productDetail = action.payload;
@@ -40,6 +51,7 @@ const CartsSlice = createSlice({
 });
 console.log(initialState.carts);
 
-export const { setCarts, setRemoveItem } = CartsSlice.actions;
+export const { setCarts, setRemoveItem, setEditItem, setStateEdit } =
+  CartsSlice.actions;
 
 export default CartsSlice.reducer;
