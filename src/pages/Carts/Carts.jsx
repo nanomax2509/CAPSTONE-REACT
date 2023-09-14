@@ -26,7 +26,7 @@ function Carts() {
           ) : (
             <p>Giở hàng của bạn trống</p>
           )}
-          {carts.map((item, index) => {
+          {carts?.map((item, index) => {
             return <CartItem key={item.id} index={index} item={item} />;
           })}
           {carts?.length !== 0 ? (
