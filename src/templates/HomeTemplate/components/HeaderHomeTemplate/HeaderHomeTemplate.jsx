@@ -74,6 +74,7 @@ function HeaderHomeTemplate() {
                 {userProfile.email}
               </p>
               <button onClick={handleLogout}>Logout</button>
+              {deleteKey(ACCESS_TOKEN)}
             </>
           ) : (
             <>

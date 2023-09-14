@@ -29,7 +29,7 @@ function DetailProduct() {
   console.log(carts);
   const handleQuantity = (num) => {
     if (quantity === 1 && num === -1) {
-      quantity = 1;
+      setQuantity(1);
     } else {
       setQuantity(quantity + num);
     }

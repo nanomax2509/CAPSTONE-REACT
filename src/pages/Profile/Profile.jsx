@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileThunk } from "../../redux/slices/User";
 import { deleteKey, getLocalStorage } from "../../utils";
-import { REQUEST_CARTS } from "../../constant";
+import { ACCESS_TOKEN, REQUEST_CARTS } from "../../constant";
 import { useNavigate } from "react-router-dom";
 
 function Profile() {
@@ -10,7 +10,6 @@ function Profile() {
   // call api get profile
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   useEffect(() => {
     const actionThunk = getProfileThunk();
     dispatch(actionThunk);
