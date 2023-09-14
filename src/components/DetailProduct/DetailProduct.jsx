@@ -10,7 +10,7 @@ function DetailProduct() {
   const { productDetail } = useSelector((state) => state.ProductReducer);
   let selectSize = "";
   const [quantity, setQuantity] = useState(1);
-  const [size, setSize] = useState("");
+  const [size, setSize] = useState("36");
   console.log(productDetail);
   const { carts } = useSelector((state) => state.CartsReducer);
   const cartItem = {

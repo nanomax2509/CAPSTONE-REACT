@@ -20,6 +20,8 @@ const CartsSlice = createSlice({
         state.carts.push(action.payload);
         state.totalQuantity++;
         saveLocalStorage(LIST_CARTS, state.carts);
+      } else {
+        alert("Bạn đã thêm sản phẩm vào giỏ hàng");
       }
     },
     setRemoveItem: (state, action) => {
