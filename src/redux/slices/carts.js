@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getLocalStorage, saveLocalStorage } from "../../utils";
 import { LIST_CARTS } from "../../constant";
 export const initialState = {
-  carts: getLocalStorage(LIST_CARTS),
+  carts: getLocalStorage(LIST_CARTS) ?? [],
   totalQuantity: 0,
   stateEdit: false,
 };
