@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DetailProduct.scss";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setCarts } from "../../redux/slices/carts";
 import { deleteKey, saveLocalStorage } from "../../utils";
 import { LIST_CARTS } from "../../constant";
@@ -8,14 +8,27 @@ import { LIST_CARTS } from "../../constant";
 function DetailProduct() {
   // deleteKey(LIST_CARTS)
   const { productDetail } = useSelector((state) => state.ProductReducer);
+  const [quantity, setQuantity] = useState(1);
+  console.log(productDetail);
   const { carts } = useSelector((state) => state.CartsReducer);
-	const dispatch=useDispatch();
-	const handleAddToCart=()=>{
-		const action=setCarts(productDetail);
-	  dispatch(action);
+  const cartItem = {
+    ...productDetail,
+    orderQuantity: quantity,
+  };
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    const action = setCarts(cartItem);
+    dispatch(action);
     // saveLocalStorage(LIST_CARTS,action);
-	};
-	console.log(carts)
+  };
+  console.log(carts);
+  const handleQuantity = (num) => {
+    if (quantity === 1 && num === -1) {
+      quantity = 1;
+    } else {
+      setQuantity(quantity + num);
+    }
+  };
   // {....}
   return (
     <div className="detail-product">
@@ -36,11 +49,30 @@ function DetailProduct() {
         </div>
         <span className="detail-product-price">{productDetail.price}$</span>
         <div className="detail-product-quantity">
-          <button className="detail-product-quantity-btn btn-warning">-</button>
-          <span>1</span>
-          <button className="detail-product-quantity-btn btn-warning ">+</button>
+          <button
+            onClick={() => {
+              handleQuantity(-1);
+            }}
+            className="detail-product-quantity-btn btn-warning"
+          >
+            -
+          </button>
+          <span>{quantity}</span>
+          <button
+            onClick={() => {
+              handleQuantity(1);
+            }}
+            className="detail-product-quantity-btn btn-warning "
+          >
+            +
+          </button>
         </div>
-        <button onClick={handleAddToCart} className="detail-product-add-to-cart-btn btn-warning">Add to cart</button>
+        <button
+          onClick={handleAddToCart}
+          className="detail-product-add-to-cart-btn btn-warning"
+        >
+          Add to cart
+        </button>
       </div>
     </div>
   );

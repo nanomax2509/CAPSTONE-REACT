@@ -3,8 +3,8 @@ import css from "./carts.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { setRemoveItem } from "../../redux/slices/carts";
 function CartItem(props) {
-  const [quantity, setQuantity] = useState(1);
   const { item, index } = props;
+  const [quantity, setQuantity] = useState(item.orderQuantity);
   const dispatch = useDispatch();
   const handleDelete = (id) => {
     const action = setRemoveItem(id);
