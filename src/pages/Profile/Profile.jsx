@@ -22,7 +22,7 @@ function Profile() {
     <div>
       <div>
         <img
-          src={userProfile.avatar}
+          src={userProfile?.avatar}
           style={{
             width: 200,
             height: 200,
@@ -32,7 +32,7 @@ function Profile() {
       </div>
       <div>
         <label>Email</label>
-        <input type="text" value={userProfile.email} />
+        <input type="text" value={userProfile?.email} />
       </div>
     </div>
   );

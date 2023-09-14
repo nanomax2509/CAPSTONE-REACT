@@ -18,7 +18,12 @@ import {
   getLocalStorage,
   saveLocalStorage,
 } from "../../../../utils";
-import { ACCESS_TOKEN, LIST_CARTS, REQUEST_CARTS } from "../../../../constant";
+import {
+  ACCESS_TOKEN,
+  LIST_CARTS,
+  REQUEST_CARTS,
+  USERPROFILE,
+} from "../../../../constant";
 import { resetUserProfile } from "../../../../redux/slices/User";
 
 function HeaderHomeTemplate() {
@@ -33,6 +38,7 @@ function HeaderHomeTemplate() {
     navigate("/login");
     // xóa localStorage
     deleteKey(ACCESS_TOKEN);
+    deleteKey(USERPROFILE);
     // reset userLogin ở trên redux.
     const action = resetUserProfile();
     dispatch(action);
@@ -64,7 +70,7 @@ function HeaderHomeTemplate() {
             <p className="header-icon-cart">🛒</p>
             <p className="header-cart-number">({listCart.length})</p>
           </button>
-          {userProfile.email ? (
+          {userProfile?.email ? (
             <>
               <p
                 style={{
@@ -74,7 +80,6 @@ function HeaderHomeTemplate() {
                 {userProfile.email}
               </p>
               <button onClick={handleLogout}>Logout</button>
-              {deleteKey(ACCESS_TOKEN)}
             </>
           ) : (
             <>
