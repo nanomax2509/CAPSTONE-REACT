@@ -34,7 +34,7 @@ function CartItem(props) {
         {" "}
         <img src={item?.image} alt="#" />
       </td>
-      <td>{item.orderSize}</td>
+      <td>{item?.orderSize}</td>
       <td className="p-0">{item?.name}</td>
       <td>{item?.price} $</td>
       <td className={css["quantity-input"]}>
