@@ -28,20 +28,20 @@ function CartItem(props) {
     dispatch(setStateEdit(true));
   };
   return (
-    <tr key={item.id}>
+    <tr key={item?.id}>
       <td>{index + 1}</td>
       <td className="p-0">
         {" "}
-        <img src={item.image} alt="#" />
+        <img src={item?.image} alt="#" />
       </td>
       <td>{item.orderSize}</td>
-      <td className="p-0">{item.name}</td>
-      <td>{item.price} $</td>
+      <td className="p-0">{item?.name}</td>
+      <td>{item?.price} $</td>
       <td className={css["quantity-input"]}>
         <button
           className="btn btn-success "
           onClick={() => {
-            handleQuantity(-1, item.id);
+            handleQuantity(-1, item?.id);
           }}
         >
           -
@@ -50,13 +50,13 @@ function CartItem(props) {
         <button
           className="btn btn-success "
           onClick={() => {
-            handleQuantity(1, item.id);
+            handleQuantity(1, item?.id);
           }}
         >
           +
         </button>
       </td>
-      <td className="p-0">{quantity * item.price}$</td>
+      <td className="p-0">{quantity * item?.price}$</td>
       <td>
         <button onClick={handleEdit} className="btn btn-primary m-1">
           Edit
@@ -64,7 +64,7 @@ function CartItem(props) {
         <button
           className="btn btn-danger m-1"
           onClick={() => {
-            handleDelete(item.id);
+            handleDelete(item?.id);
           }}
         >
           Delete

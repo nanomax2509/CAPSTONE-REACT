@@ -68,7 +68,7 @@ function HeaderHomeTemplate() {
           </NavLink>
           <button onClick={handleToCarts} className="header-nav-cart btn">
             <p className="header-icon-cart">🛒</p>
-            <p className="header-cart-number">({listCart.length})</p>
+            <p className="header-cart-number">({listCart?.length})</p>
           </button>
           {userProfile?.email ? (
             <>
@@ -77,7 +77,7 @@ function HeaderHomeTemplate() {
                   color: "white",
                 }}
               >
-                {userProfile.email}
+                {userProfile?.email}
               </p>
               <button onClick={handleLogout}>Logout</button>
             </>
