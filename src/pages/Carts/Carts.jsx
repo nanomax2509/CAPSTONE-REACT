@@ -12,7 +12,7 @@ function Carts() {
       <h2 className={css["heading-cart"]}>Carts</h2>
       <div>
         <table className={css["cart-table"]}>
-          {carts.length !== 0 ? (
+          {carts?.length !== 0 ? (
             <tr>
               <th>STT</th>
               <th className="p-0">img</th>
@@ -29,7 +29,7 @@ function Carts() {
           {carts.map((item, index) => {
             return <CartItem key={item.id} index={index} item={item} />;
           })}
-          {carts.length !== 0 ? (
+          {carts?.length !== 0 ? (
             <tr>
               <td></td>
               <td></td>
