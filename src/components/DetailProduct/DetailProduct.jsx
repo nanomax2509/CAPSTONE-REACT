@@ -8,18 +8,23 @@ import { LIST_CARTS } from "../../constant";
 function DetailProduct() {
   // deleteKey(LIST_CARTS)
   const { productDetail } = useSelector((state) => state.ProductReducer);
+  let selectSize = "";
   const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState("");
   console.log(productDetail);
   const { carts } = useSelector((state) => state.CartsReducer);
   const cartItem = {
     ...productDetail,
     orderQuantity: quantity,
+    orderSize: size,
   };
   const dispatch = useDispatch();
   const handleAddToCart = () => {
     const action = setCarts(cartItem);
     dispatch(action);
-    // saveLocalStorage(LIST_CARTS,action);
+  };
+  const handleSelectSize = (e) => {
+    setSize(e.target.innerHTML);
   };
   console.log(carts);
   const handleQuantity = (num) => {
@@ -41,11 +46,18 @@ function DetailProduct() {
         <p>{productDetail.description}</p>
         <h3 className="text-success">Available size</h3>
         <div className="detail-product-size">
-          <button className="detail-product-size-btn btn-primary">38</button>
-          <button className="detail-product-size-btn btn-primary">39</button>
-          <button className="detail-product-size-btn btn-primary">40</button>
-          <button className="detail-product-size-btn btn-primary">41</button>
-          <button className="detail-product-size-btn btn-primary">42</button>
+          {/* <button className="detail-product-size-btn btn-primary"><span >38</span></button> */}
+          {productDetail.size.map((size, index) => {
+            return (
+              <button
+                key={index}
+                onClick={handleSelectSize}
+                className="detail-product-size-btn btn-primary"
+              >
+                {size}
+              </button>
+            );
+          })}
         </div>
         <span className="detail-product-price">{productDetail.price}$</span>
         <div className="detail-product-quantity">

@@ -20,10 +20,11 @@ function CartItem(props) {
   return (
     <tr key={item.id}>
       <td>{index + 1}</td>
-      <td className="p-0">{item.id}</td>
-      <td>
+      <td className="p-0">
+        {" "}
         <img src={item.image} alt="#" />
       </td>
+      <td>{item.orderSize}</td>
       <td className="p-0">{item.name}</td>
       <td>{item.price} $</td>
       <td className={css["quantity-input"]}>

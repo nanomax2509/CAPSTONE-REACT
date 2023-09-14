@@ -15,8 +15,8 @@ function Carts() {
           {carts.length !== 0 ? (
             <tr>
               <th>STT</th>
-              <th className="p-0">id</th>
-              <th>img</th>
+              <th className="p-0">img</th>
+              <th>size</th>
               <th className="p-0">name</th>
               <th>price</th>
               <th>quantity</th>
