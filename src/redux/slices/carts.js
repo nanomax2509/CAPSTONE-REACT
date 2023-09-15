@@ -47,6 +47,23 @@ const CartsSlice = createSlice({
     setStateEdit: (state, action) => {
       state.stateEdit = action.payload;
     },
+    setQuantityOrder: (state, action) => {
+      const newcarts = state.carts?.map((sp) => {
+      if(sp.id===action.payload.id){
+        return {
+          ...sp,
+          orderQuantity:action.payload.quantity,
+       }
+      }
+       else{
+        return sp
+       }
+      }
+     );
+     state.carts=newcarts;
+     saveLocalStorage(LIST_CARTS,state.carts)
+
+    },
     // setTotalQuatity
     // setProductDetail: (state, action) => {
     // 	state.productDetail = action.payload;
@@ -55,7 +72,7 @@ const CartsSlice = createSlice({
 });
 console.log(initialState.carts);
 
-export const { setCarts, setRemoveItem, setEditItem, setStateEdit,setResetCarts } =
+export const { setCarts, setRemoveItem, setEditItem, setStateEdit,setResetCarts,setQuantityOrder } =
   CartsSlice.actions;
 
 export default CartsSlice.reducer;

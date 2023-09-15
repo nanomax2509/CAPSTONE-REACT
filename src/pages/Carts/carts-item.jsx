@@ -3,6 +3,7 @@ import css from "./carts.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setEditItem,
+  setQuantityOrder,
   setRemoveItem,
   setStateEdit,
 } from "../../redux/slices/carts";
@@ -21,6 +22,7 @@ function CartItem(props) {
       handleDelete(id);
     } else {
       setQuantity(quantity + num);
+      dispatch(setQuantityOrder({id,quantity:quantity+num}));
     }
   };
   const handleEdit = () => {
