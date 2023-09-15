@@ -24,6 +24,10 @@ const CartsSlice = createSlice({
         alert("Bạn đã thêm sản phẩm vào giỏ hàng");
       }
     },
+    setResetCarts:(state) =>{
+      state.carts=[];
+      saveLocalStorage(LIST_CARTS, state.carts);
+    },
     setRemoveItem: (state, action) => {
       const newcart = state.carts?.filter((item) => {
         return item.id !== action.payload;
@@ -51,7 +55,7 @@ const CartsSlice = createSlice({
 });
 console.log(initialState.carts);
 
-export const { setCarts, setRemoveItem, setEditItem, setStateEdit } =
+export const { setCarts, setRemoveItem, setEditItem, setStateEdit,setResetCarts } =
   CartsSlice.actions;
 
 export default CartsSlice.reducer;

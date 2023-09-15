@@ -14,7 +14,6 @@ import ListProduct from "../../components/ListProduct/ListProduct";
 import { Skeleton } from "antd";
 import "./Detail.scss";
 import { getProductByIdApi } from "../../services/product.services";
-
 function Detail() {
   const params = useParams();
   const dispatch = useDispatch();
