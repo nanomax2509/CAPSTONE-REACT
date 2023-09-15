@@ -5,7 +5,7 @@ import { ACCESS_TOKEN, USERPROFILE } from "../../constant";
 import { axiosWithAuth } from "../../services/config.services";
 
 const initialState = {
-  userProfile: getLocalStorage(USERPROFILE),
+  userProfile: getLocalStorage(USERPROFILE) ?? {},
 };
 
 export const getProfileThunk = createAsyncThunk(
